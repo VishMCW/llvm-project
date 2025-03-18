@@ -311,6 +311,7 @@ defm SPV_INTEL_joint_matrix : ExtensionOperand<114>;
 defm SPV_INTEL_float_controls2 : ExtensionOperand<115>;
 defm SPV_INTEL_bindless_images : ExtensionOperand<116>;
 defm SPV_INTEL_long_composites : ExtensionOperand<117>;
+defm SPV_INTEL_memory_access_aliasing : ExtensionOperand<118>;
 
 //===----------------------------------------------------------------------===//
 // Multiclass used to define Capabilities enum values and at the same time
@@ -510,6 +511,7 @@ defm FunctionFloatControlINTEL : CapabilityOperand<5821, 0, 0, [SPV_INTEL_float_
 defm LongCompositesINTEL : CapabilityOperand<6089, 0, 0, [SPV_INTEL_long_composites], []>;
 defm BindlessImagesINTEL : CapabilityOperand<6528, 0, 0, [SPV_INTEL_bindless_images], []>;
 defm FPGAMemoryAccessesINTEL : CapabilityOperand<5898, 0, 0, [SPV_INTEL_fpga_memory_accesses], []>;
+defm MemoryAccessAliasingINTEL : CapabilityOperand<5910, 0, 0, [SPV_INTEL_memory_access_aliasing], []>;
 
 //===----------------------------------------------------------------------===//
 // Multiclass used to define SourceLanguage enum values and at the same time
@@ -1262,6 +1264,10 @@ defm BurstCoalesceINTEL : DecorationOperand<5899, 0, 0, [], [FPGAMemoryAccessesI
 defm CacheSizeINTEL : DecorationOperand<5900, 0, 0, [], [FPGAMemoryAccessesINTEL]>;
 defm DontStaticallyCoalesceINTEL  : DecorationOperand<5901, 0, 0, [], [FPGAMemoryAccessesINTEL]>;
 defm PrefetchINTEL : DecorationOperand<5902, 0, 0, [], [FPGAMemoryAccessesINTEL]>;
+defm AliasScopeINTEL : DecorationOperand<5914, 0, 0, [], [MemoryAccessAliasingINTEL]>;
+defm NoAliasINTEL : DecorationOperand<5915, 0, 0, [], [MemoryAccessAliasingINTEL]>;
+
+
 //===----------------------------------------------------------------------===//
 // Multiclass used to define BuiltIn enum values and at the same time
 // SymbolicOperand entries with string mnemonics, versioning, extensions and
@@ -1533,6 +1539,8 @@ defm Nontemporal : MemoryOperandOperand<0x4, 0, 0, [], []>;
 defm MakePointerAvailableKHR : MemoryOperandOperand<0x8, 0, 0, [], [VulkanMemoryModelKHR]>;
 defm MakePointerVisibleKHR : MemoryOperandOperand<0x10, 0, 0, [], [VulkanMemoryModelKHR]>;
 defm NonPrivatePointerKHR : MemoryOperandOperand<0x20, 0, 0, [], [VulkanMemoryModelKHR]>;
+defm AliasScopeINTELMask : MemoryOperandOperand<0x10000, 0, 0, [], [MemoryAccessAliasingINTEL]>;
+defm NoAliasINTELMask : MemoryOperandOperand<0x20000, 0, 0, [], [MemoryAccessAliasingINTEL]>;
 
 //===----------------------------------------------------------------------===//
 // Multiclass used to define Scope enum values and at the same time
