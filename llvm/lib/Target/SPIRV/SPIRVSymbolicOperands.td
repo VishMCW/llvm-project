@@ -509,6 +509,7 @@ defm FloatingPointModeINTEL : CapabilityOperand<5583, 0, 0, [SPV_INTEL_float_con
 defm FunctionFloatControlINTEL : CapabilityOperand<5821, 0, 0, [SPV_INTEL_float_controls2], []>;
 defm LongCompositesINTEL : CapabilityOperand<6089, 0, 0, [SPV_INTEL_long_composites], []>;
 defm BindlessImagesINTEL : CapabilityOperand<6528, 0, 0, [SPV_INTEL_bindless_images], []>;
+defm FPGAMemoryAccessesINTEL : CapabilityOperand<5898, 0, 0, [SPV_INTEL_fpga_memory_accesses], []>;
 
 //===----------------------------------------------------------------------===//
 // Multiclass used to define SourceLanguage enum values and at the same time
@@ -1257,7 +1258,10 @@ defm ImplementInRegisterMapINTEL : DecorationOperand<6191, 0, 0, [], [GlobalVari
 defm FunctionRoundingModeINTEL : DecorationOperand<5822, 0, 0, [], [FunctionFloatControlINTEL]>;
 defm FunctionDenormModeINTEL : DecorationOperand<5823, 0, 0, [], [FunctionFloatControlINTEL]>;
 defm FunctionFloatingPointModeINTEL : DecorationOperand<6080, 0, 0, [], [FunctionFloatControlINTEL]>;
-
+defm BurstCoalesceINTEL : DecorationOperand<5899, 0, 0, [], [FPGAMemoryAccessesINTEL]>;
+defm CacheSizeINTEL : DecorationOperand<5900, 0, 0, [], [FPGAMemoryAccessesINTEL]>;
+defm DontStaticallyCoalesceINTEL  : DecorationOperand<5901, 0, 0, [], [FPGAMemoryAccessesINTEL]>;
+defm PrefetchINTEL : DecorationOperand<5902, 0, 0, [], [FPGAMemoryAccessesINTEL]>;
 //===----------------------------------------------------------------------===//
 // Multiclass used to define BuiltIn enum values and at the same time
 // SymbolicOperand entries with string mnemonics, versioning, extensions and
